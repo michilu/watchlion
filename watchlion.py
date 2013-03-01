@@ -111,7 +111,8 @@ def load_config(options=[0]):
     logging.debug("load_config: loaded %s" % config)
     set_watch_extension([".%s" % i for i in config["build"].keys()])
     set_build_cmd(config["build"])
-    logging.getLogger().setLevel(config["loglevel"].upper())
+    if "loglevel" in config:
+      logging.getLogger().setLevel(config["loglevel"].upper())
 
 def main():
   logging.basicConfig(level=logging.INFO)
