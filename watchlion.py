@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 from optparse import OptionParser
-import commands
 import logging
 import os
+import subprocess
 import sys
 import time
 import yaml
@@ -86,7 +86,10 @@ def callback(file_event):
   cmd = BUILD_CMD.get(os.path.splitext(file_event.name)[1].lstrip("."), "make")
   if is_watch_event(file_event) and is_watch_extension(file_event):
     logging.info(cmd)
-    logging.info(commands.getoutput(cmd))
+    try:
+      subprocess.check_call(cmd, shell=True)
+    except (subprocess.CalledProcessError, OSError) as e:
+      logging.warning(e)
 
 def parse_options():
   parser = OptionParser()
