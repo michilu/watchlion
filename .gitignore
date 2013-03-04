@@ -1,7 +1,10 @@
+dist
 tags
 
 syntax: glob
 
+*.egg
+*.egg-info
 *.py?
 *.so
 *.sw?
