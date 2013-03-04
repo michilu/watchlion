@@ -106,7 +106,7 @@ def load_config(options=[0]):
   logging.info("load_config: loading %s" % options[0].config)
   try:
     config = yaml.load(open(options[0].config).read())
-  except Exception, e:
+  except Exception as e:
     logging.error("%s: %s" % (e.__class__.__name__, e))
     if not WATCH_EXTENSIONS:
       sys.exit(1)

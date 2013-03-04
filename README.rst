@@ -105,7 +105,7 @@ Supported Platforms
 
 Dependencies
 ------------
-1. Python 2.5 or above.
+1. Python 2.6 or above.
 2. XCode_
 3. PyYAML_
 
